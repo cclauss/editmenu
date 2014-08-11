@@ -1,5 +1,5 @@
 # coding: utf-8
-import editor
+import editor, ui
 
 def buttonhandle(sender):
 	"""handler for generic button tap.
@@ -10,13 +10,10 @@ def buttonhandle(sender):
 
 def showsidebar():
 	"""show the sidebar. """
-	import ui
-	v=ui.load_view('editmenu')
-	v.present('sidebar')
+	ui.load_view('editmenu').present('sidebar')
 
 def indent():
 	"""indent selected lines by one tab"""
-	import editor
 	import re
 	INDENTSTR='\t' #two spaces
 	i=editor.get_line_selection()
@@ -28,7 +25,6 @@ def indent():
 
 def unindent():
 	"""unindent selected lines all the way"""
-	import editor
 	import textwrap
 
 	i=editor.get_line_selection()
@@ -40,7 +36,6 @@ def unindent():
 
 def comment():
 	"""" comment out selected lines"""
-	import editor
 	import re
 	COMMENT='#' 
 	i=editor.get_line_selection()
@@ -52,7 +47,6 @@ def comment():
 
 def uncomment():
 	"""" uncomment selected lines"""
-	import editor
 	import re
 	COMMENT='#' 
 	i=editor.get_line_selection()
@@ -68,7 +62,6 @@ def uncomment():
 
 def execlines():
 	"""execute selected lines in console.	""" 
-	import editor
 	import textwrap
 
 	a=editor.get_text()[editor.get_line_selection()[0]:editor.get_line_selection()[1]]
@@ -76,7 +69,6 @@ def execlines():
 	exec(textwrap.dedent(a))
 
 def selectstart():
-	import editor
 	i=editor.get_selection()
 	editor.set_selection(i[0],i[1]+1)
 
